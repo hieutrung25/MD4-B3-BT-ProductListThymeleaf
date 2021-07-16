@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+<h3>Danh sách sản phẩm</h3>
+<div class="notify">
+    <span th:text="${message}"></span>
+</div>
+<div class="notify">
+    <span>
+        <a th:href="@{/create}">Thêm mới</a>
+    </span>
+</div>
+<table class="productList">
+    <thead>
+    <tr>
+    <tbody>
+    <tr th:each="product:${productList}">
+        <td th:text="${product.getId()}">
+        </td>
+        <td>
+            <a th:href="@{/detail/{id}(id=${product.getId()})}" th:text="${product.getName()}"></a>
+        </td>
+        <td th:text="${product.getDescription()}">
+        </td>
+        <td th:text="${product.getPrice()}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
